@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Car Sales</string>
+    <string name="title_activity_auth">AuthActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="login_fragment_label">Login Fragment</string>
+    <string name="register_fragment_label">Register Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+
+    <string name="register">Зарегистрироваться</string>
+    <string name="go_to_login">Уже есть аккаунт?</string>
+    <string name="login">Войти</string>
+    <string name="username">Имя пользователя</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="go_to_register">Нет аккаунта?</string>
+    <string name="name">Имя</string>
+    <string name="signOut">Выход</string>
 </resources>
