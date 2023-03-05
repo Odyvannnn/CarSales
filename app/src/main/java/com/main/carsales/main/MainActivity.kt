@@ -21,10 +21,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.ads->replaceFragment(HomeFragment())
                 R.id.addAd->replaceFragment(AddAdFragment())
                 R.id.account->replaceFragment(AccountFragment())
-
-                else ->{
-
-                }
             }
             true
         }
