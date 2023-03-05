@@ -45,7 +45,7 @@ class RegisterFragment : Fragment() {
 
         binding.goToLogin.setOnClickListener {
             val navController = NavHostFragment.findNavController(this)
-            navController.navigate(R.id.LoginFragment)
+            navController.navigate(R.id.loginFragment)
         }
 
         //Firebase Auth
@@ -103,7 +103,7 @@ class RegisterFragment : Fragment() {
                     ).show()
                     updateUI(user)
                     val navController = NavHostFragment.findNavController(this)
-                    navController.navigate(R.id.action_RegisterFragment_to_MainActivity)
+                    navController.navigate(R.id.action_registerFragment_to_mainActivity)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)

@@ -17,4 +17,6 @@
     <string name="go_to_register">Нет аккаунта?</string>
     <string name="name">Имя</string>
     <string name="signOut">Выход</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
