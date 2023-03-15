@@ -2,6 +2,7 @@ package com.main.carsales.ad
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -25,6 +26,7 @@ class AdActivity : AppCompatActivity() {
         binding = ActivityAdBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.publishButton.setOnClickListener{
             val adInfo = hashMapOf(
                 "car_brand" to binding.carBrand.selectedItem.toString(),
@@ -37,7 +39,9 @@ class AdActivity : AppCompatActivity() {
                 "price" to binding.price.text.toString(),
                 "status" to "on_moderation"
             )
-
+            if (!validateForm()) {
+                return@setOnClickListener
+            }
             db.collection("ads").document().set(adInfo)
                 .addOnSuccessListener {
                     startActivity(Intent(this, MainActivity::class.java))
@@ -86,6 +90,39 @@ class AdActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+        val year = binding.year.text.toString()
+        if (TextUtils.isEmpty(year)) {
+            binding.year.error = "Введите год выпуска автомобиля."
+            valid = false
+        } else {
+            binding.year.error = null
+        }
+        val mileage = binding.mileage.text.toString()
+        if (TextUtils.isEmpty(mileage)) {
+            binding.mileage.error = "Введите пробег автомобиля."
+            valid = false
+        } else {
+            binding.mileage.error = null
+        }
+        val enginePower = binding.enginePower.text.toString()
+        if (TextUtils.isEmpty(enginePower)) {
+            binding.enginePower.error = "Введите мощность двигателя."
+            valid = false
+        } else {
+            binding.mileage.error = null
+        }
+        val price = binding.price.text.toString()
+        if (TextUtils.isEmpty(price)) {
+            binding.price.error = "Введите стоимость автомобиля."
+            valid = false
+        } else {
+            binding.price.error = null
+        }
+        return valid
     }
 
 }
