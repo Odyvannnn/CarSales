@@ -25,6 +25,7 @@
     <string name="engine_power">Мощность двигателя</string>
     <string name="transmission">Коробка</string>
     <string name="car_drive_type">Привод</string>
+    <string name="price">Цена</string>
 
     <string-array name="car_transmission_array">
         <item>Автоматическая</item>

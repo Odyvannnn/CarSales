@@ -99,6 +99,18 @@
             android:layout_height="50dp"
             android:contentDescription="@string/car_drive_type"/>
 
+        <TextView
+            android:id="@+id/price_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/price" />
+
+        <EditText
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="number" />
+
 
     </LinearLayout>
 

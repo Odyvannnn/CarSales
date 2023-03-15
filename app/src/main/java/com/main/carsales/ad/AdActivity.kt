@@ -34,6 +34,7 @@ class AdActivity : AppCompatActivity() {
                 "engine_power" to binding.enginePower.text.toString(),
                 "transmission" to binding.transmission.selectedItem.toString(),
                 "car_drive_type" to binding.carDriveType.selectedItem.toString(),
+                "price" to binding.price.text.toString(),
                 "status" to "on_moderation"
             )
 
