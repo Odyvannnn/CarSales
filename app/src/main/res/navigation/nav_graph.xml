@@ -36,4 +36,9 @@
         android:name="com.main.carsales.main.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/adActivity"
+        android:name="com.main.carsales.ad.AdActivity"
+        android:label="activity_ad"
+        tools:layout="@layout/activity_ad" />
 </navigation>

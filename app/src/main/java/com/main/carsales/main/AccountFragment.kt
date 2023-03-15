@@ -12,7 +12,6 @@ import com.main.carsales.databinding.FragmentAccountBinding
 
 class AccountFragment : Fragment() {
 
-    private lateinit var auth: FirebaseAuth
     private var _binding: FragmentAccountBinding? = null
     private val binding: FragmentAccountBinding
         get() = _binding!!

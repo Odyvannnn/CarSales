@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="audi_models">
+        <item>A3</item>
+        <item>A4</item>
+        <item>Q7</item>
+    </string-array>
+    <string-array name="bmw_models">
+        <item>3</item>
+        <item>7</item>
+        <item>X5</item>
+    </string-array>
+    <string-array name="toyota_models">
+        <item>Camry</item>
+        <item>Land Cruiser</item>
+        <item>RAV4</item>
+    </string-array>
+</resources>
