@@ -6,9 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.main.carsales.R
-import com.main.carsales.ad.AdActivity
-import com.main.carsales.databinding.FragmentAccountBinding
+import com.main.carsales.ad.AddAdActivity
 import com.main.carsales.databinding.FragmentAddAdBinding
 
 class AddAdFragment : Fragment() {
@@ -28,7 +26,7 @@ class AddAdFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.addAdButton.setOnClickListener{
-            startActivity(Intent(context, AdActivity::class.java))
+            startActivity(Intent(context, AddAdActivity::class.java))
         }
     }
 }
