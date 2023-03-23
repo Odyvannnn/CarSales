@@ -44,7 +44,7 @@ class HomeFragment : Fragment() {
                     for (data in it.documents){
                         val ad: Ad? = data.toObject(Ad::class.java)
                         if (ad != null) {
-                            if (ad.status == "ready"){
+                            if (ad.status == "published"){
                                 adList.add(ad)
                             }
                         }
