@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -41,11 +42,13 @@ class AddPhotosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         binding = ActivityAddPhotosBinding.inflate(layoutInflater)
+        requestCameraPermission(this)
+        startCamera()
         setContentView(binding.root)
         requestCameraPermission(this)
         binding.continueButton.visibility = View.INVISIBLE
-        startCamera()
         binding.imageCaptureButton.setOnClickListener {
             when (imageCount){
                 0 -> binding.photoHintText.text = resources.getString(R.string.ph_left)
@@ -77,12 +80,6 @@ class AddPhotosActivity : AppCompatActivity() {
         }
 
     }
-    private fun hasCameraPermission(context: Context): Boolean {
-        return ContextCompat.checkSelfPermission(
-            context,
-            Manifest.permission.CAMERA
-        ) == PackageManager.PERMISSION_GRANTED
-    }
     private fun requestCameraPermission(activity: AddPhotosActivity) {
         ActivityCompat.requestPermissions(
             activity,
@@ -92,15 +89,11 @@ class AddPhotosActivity : AppCompatActivity() {
     }
 
     private fun startCamera() {
-        if (hasCameraPermission(this)) {
-            val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
-            cameraProviderFuture.addListener({
-                val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-                bindPreview(cameraProvider)
-            }, ContextCompat.getMainExecutor(this))
-        } else {
-            requestCameraPermission(this)
-        }
+        val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
+        cameraProviderFuture.addListener({
+            val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+            bindPreview(cameraProvider)
+        }, ContextCompat.getMainExecutor(this))
     }
 
     private fun bindPreview(cameraProvider: ProcessCameraProvider) {
