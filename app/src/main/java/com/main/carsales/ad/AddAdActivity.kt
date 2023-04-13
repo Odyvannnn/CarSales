@@ -28,6 +28,7 @@ class AddAdActivity : AppCompatActivity() {
 
 
         binding.publishButton.setOnClickListener{
+            val fileName = System.currentTimeMillis().toString()
             val adInfo = hashMapOf(
                 "car_brand" to binding.carBrand.selectedItem.toString(),
                 "car_model" to binding.carModel.selectedItem.toString(),
@@ -37,16 +38,18 @@ class AddAdActivity : AppCompatActivity() {
                 "transmission" to binding.transmission.selectedItem.toString(),
                 "car_drive_type" to binding.carDriveType.selectedItem.toString(),
                 "price" to binding.price.text.toString(),
-                "status" to "on_moderation"
+                "status" to "waiting_photos"
             )
             if (!validateForm()) {
                 return@setOnClickListener
             }
-            db.collection("ads").document().set(adInfo)
+            db.collection("ads").document(fileName).set(adInfo)
                 .addOnSuccessListener {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, AddPhotosActivity::class.java)
+                    intent.putExtra("fileName", fileName)
+                    startActivity(intent)
                     Toast.makeText(
-                        this, "Объявление отправлено на модерацию",
+                        this, "Объявление сохранено",
                         Toast.LENGTH_SHORT
                     ).show()
                 }.addOnFailureListener {
