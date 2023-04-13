@@ -39,4 +39,15 @@
         <item>Задний</item>
     </string-array>
 
+    <string name="ph_front">Фото спереди</string>
+    <string name="ph_left">Фото слева</string>
+    <string name="ph_back">Фото сзади</string>
+    <string name="ph_right">Фото справа</string>
+    <string name="ph_interior">Фото салона</string>
+    <string name="ph_str_wheel">Фото руля</string>
+    <string name="ph_knob">Фото ручки КПП</string>
+    <string name="ph_driver_seat">Фото подушки водительского сидения</string>
+    <string name="ph_motor">Фото моторного отсека</string>
+    <string name="ph_end">Все фото сделаны!</string>
+
 </resources>

@@ -6,43 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ad.AddPhotosActivity">
 
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="163dp" />
+
     <TextView
-        android:id="@+id/front_ph_text"
+        android:id="@+id/photo_hint_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Фото спереди"
+        android:text="@string/ph_front"
+        android:layout_marginTop="50dp"
+        android:textColor="#ffffffff"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/front_ph_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:id="@+id/image_capture_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="50dp"
+        android:elevation="2dp"
         android:text="Сделать фото"
-        app:layout_constraintBottom_toBottomOf="@+id/front_ph_text"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/front_ph_text" />
-
-    <TextView
-        android:id="@+id/left_ph_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:text="Фото слева"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/front_ph_text" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/left_ph_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:text="Сделать фото"
-        app:layout_constraintBottom_toBottomOf="@+id/left_ph_text"
+        android:id="@+id/continue_button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginBottom="50dp"
+        android:elevation="2dp"
+        android:text="Продолжить"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/left_ph_text" />
+        app:layout_constraintStart_toEndOf="@id/image_capture_button" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
