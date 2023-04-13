@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,47 +64,46 @@
                         android:id="@+id/imageView_fr"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_left"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_back"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_right"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_interior"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_str_wheel"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_knob"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_driver_seat"
                         android:layout_width="wrap_content"
                         android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:paddingEnd="8dp"/>
                     <ImageView
                         android:id="@+id/imageView_motor"
                         android:layout_width="wrap_content"
-                        android:layout_height="500dp"
-                        android:padding="4dp"/>
+                        android:layout_height="500dp"/>
                 </LinearLayout>
 
             </HorizontalScrollView>

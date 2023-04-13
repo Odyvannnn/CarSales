@@ -45,11 +45,11 @@
             android:layout_height="wrap_content"
             android:text="@string/year" />
 
-        <EditText
+        <Spinner
             android:id="@+id/year"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="number" />
+            android:contentDescription="@string/year"/>
 
         <TextView
             android:id="@+id/mileage_text"
