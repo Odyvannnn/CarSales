@@ -37,7 +37,7 @@ class AdAdapter(private val adList: ArrayList<Ad>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdViewHolder {
-        val adView = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+        val adView = LayoutInflater.from(parent.context).inflate(R.layout.ads_list_item, parent, false)
         return AdViewHolder(adView, mListener)
     }
 
