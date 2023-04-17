@@ -24,13 +24,22 @@ class AdActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setValuesToViews()
 
-        binding.galleryRecyclerView.layoutManager = LinearLayoutManager(this,
+        binding.viewPager.apply {
+            clipChildren = false
+            clipToPadding = false
+            offscreenPageLimit = 3
+            (getChildAt(0) as RecyclerView).overScrollMode =
+                RecyclerView.OVER_SCROLL_NEVER
+        }
+        binding.viewPager.adapter = GalleryAdapter(images)
+        /*binding.galleryRecyclerView.layoutManager = LinearLayoutManager(this,
             LinearLayoutManager.HORIZONTAL, false)
         setValuesToViews()
 
         val galleryAdapter = GalleryAdapter(images)
-        binding.galleryRecyclerView.adapter = galleryAdapter
+        binding.galleryRecyclerView.adapter = galleryAdapter*/
 
     }
 
