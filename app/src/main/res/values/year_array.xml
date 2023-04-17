@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="year_array">
+        <item>2023 г.</item>
+        <item>2022 г.</item>
+        <item>2021 г.</item>
+        <item>2020 г.</item>
+        <item>2019 г.</item>
+        <item>2018 г.</item>
+        <item>2017 г.</item>
+        <item>2016 г.</item>
+        <item>2015 г.</item>
+        <item>2014 г.</item>
+        <item>2013 г.</item>
+        <item>2012 г.</item>
+        <item>2011 г.</item>
+        <item>2010 г.</item>
+        <item>2009 г.</item>
+        <item>2008 г.</item>
+        <item>2007 г.</item>
+        <item>2006 г.</item>
+        <item>2005 г.</item>
+        <item>2004 г.</item>
+        <item>2003 г.</item>
+        <item>2002 г.</item>
+        <item>2001 г.</item>
+        <item>2000 г.</item>
+        <item>1999 г.</item>
+        <item>1998 г.</item>
+        <item>1997 г.</item>
+        <item>1996 г.</item>
+        <item>1995 г.</item>
+        <item>1994 г.</item>
+        <item>1993 г.</item>
+        <item>1992 г.</item>
+        <item>1991 г.</item>
+        <item>1990 г.</item>
+        <item>1989 г.</item>
+        <item>1988 г.</item>
+    </string-array>
+</resources>

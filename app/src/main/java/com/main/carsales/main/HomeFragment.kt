@@ -5,14 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.main.carsales.R
 import com.main.carsales.ad.AdActivity
@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -61,6 +60,15 @@ class HomeFragment : Fragment() {
                             intent.putExtra("car_drive_type", adList[position].car_drive_type)
                             intent.putExtra("engine_power", adList[position].engine_power)
                             intent.putExtra("transmission", adList[position].transmission)
+                            intent.putExtra("pic1", adList[position].pic1)
+                            intent.putExtra("pic2", adList[position].pic2)
+                            intent.putExtra("pic3", adList[position].pic3)
+                            intent.putExtra("pic4", adList[position].pic4)
+                            intent.putExtra("pic5", adList[position].pic5)
+                            intent.putExtra("pic6", adList[position].pic6)
+                            intent.putExtra("pic7", adList[position].pic7)
+                            intent.putExtra("pic8", adList[position].pic8)
+                            intent.putExtra("pic9", adList[position].pic9)
                             startActivity(intent)
                         }
                     })
@@ -68,5 +76,11 @@ class HomeFragment : Fragment() {
             }
             .addOnFailureListener {
             }
+    }
+    private fun loadPhoto(url: String, imageView: ImageView) {
+        Glide.with(this)
+            .load(url)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(imageView)
     }
 }

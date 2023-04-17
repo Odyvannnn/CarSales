@@ -28,25 +28,31 @@ class AddAdActivity : AppCompatActivity() {
 
 
         binding.publishButton.setOnClickListener{
+            val fileName = System.currentTimeMillis().toString()
             val adInfo = hashMapOf(
                 "car_brand" to binding.carBrand.selectedItem.toString(),
                 "car_model" to binding.carModel.selectedItem.toString(),
-                "year" to binding.year.text.toString(),
+                "year" to binding.year.selectedItem.toString(),
                 "mileage" to binding.mileage.text.toString(),
                 "engine_power" to binding.enginePower.text.toString(),
                 "transmission" to binding.transmission.selectedItem.toString(),
                 "car_drive_type" to binding.carDriveType.selectedItem.toString(),
                 "price" to binding.price.text.toString(),
-                "status" to "on_moderation"
+                "status" to "waiting_photos"
             )
+            adInfo["mileage"] += " км"
+            adInfo["engine_power"] += " л.с."
+            adInfo["price"] += " ₽"
             if (!validateForm()) {
                 return@setOnClickListener
             }
-            db.collection("ads").document().set(adInfo)
+            db.collection("ads").document(fileName).set(adInfo)
                 .addOnSuccessListener {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    val intent = Intent(this, AddPhotosActivity::class.java)
+                    intent.putExtra("fileName", fileName)
+                    startActivity(intent)
                     Toast.makeText(
-                        this, "Объявление отправлено на модерацию",
+                        this, "Объявление сохранено",
                         Toast.LENGTH_SHORT
                     ).show()
                 }.addOnFailureListener {
@@ -61,6 +67,7 @@ class AddAdActivity : AppCompatActivity() {
         val spinnerModel = findViewById<Spinner>(R.id.car_model)
         val spinnerTransmission = findViewById<Spinner>(R.id.transmission)
         val spinnerCarDriveType = findViewById<Spinner>(R.id.car_drive_type)
+        val spinnerYear = findViewById<Spinner>(R.id.year)
 
         fun adapterSpinner(array: Array<String>, spinner: Spinner){
             val adapterSpinner =
@@ -72,6 +79,7 @@ class AddAdActivity : AppCompatActivity() {
         adapterSpinner(resources.getStringArray(R.array.car_brands), spinnerBrand)
         adapterSpinner(resources.getStringArray(R.array.car_transmission_array), spinnerTransmission)
         adapterSpinner(resources.getStringArray(R.array.car_drive_type_array), spinnerCarDriveType)
+        adapterSpinner(resources.getStringArray(R.array.year_array), spinnerYear)
 
         binding.carBrand.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -85,6 +93,9 @@ class AddAdActivity : AppCompatActivity() {
                     2 -> {
                         adapterSpinner(resources.getStringArray(R.array.toyota_models), spinnerModel)
                     }
+                    3 -> {
+                        adapterSpinner(resources.getStringArray(R.array.year_array), spinnerYear)
+                    }
                 }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -94,13 +105,6 @@ class AddAdActivity : AppCompatActivity() {
 
     private fun validateForm(): Boolean {
         var valid = true
-        val year = binding.year.text.toString()
-        if (TextUtils.isEmpty(year)) {
-            binding.year.error = "Введите год выпуска автомобиля."
-            valid = false
-        } else {
-            binding.year.error = null
-        }
         val mileage = binding.mileage.text.toString()
         if (TextUtils.isEmpty(mileage)) {
             binding.mileage.error = "Введите пробег автомобиля."

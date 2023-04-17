@@ -3,8 +3,10 @@ package com.main.carsales.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.main.carsales.R
 import com.main.carsales.data.Ad
 
@@ -25,6 +27,7 @@ class AdAdapter(private val adList: ArrayList<Ad>)
         val carBrandList: TextView = itemView.findViewById(R.id.car_brand_ad)
         val carModelList: TextView = itemView.findViewById(R.id.car_model_ad)
         val carPriceList: TextView = itemView.findViewById(R.id.car_price_ad)
+        val carImageView: ImageView = itemView.findViewById(R.id.imageViewPreview)
 
         init {
             itemView.setOnClickListener{
@@ -34,7 +37,7 @@ class AdAdapter(private val adList: ArrayList<Ad>)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdViewHolder {
-        val adView = LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+        val adView = LayoutInflater.from(parent.context).inflate(R.layout.ads_list_item, parent, false)
         return AdViewHolder(adView, mListener)
     }
 
@@ -46,5 +49,9 @@ class AdAdapter(private val adList: ArrayList<Ad>)
         holder.carBrandList.text = adList[position].car_brand
         holder.carModelList.text = adList[position].car_model
         holder.carPriceList.text = adList[position].price
+
+        Glide.with(holder.itemView.context)
+            .load(adList[position].pic1)
+            .into(holder.carImageView)
     }
 }
