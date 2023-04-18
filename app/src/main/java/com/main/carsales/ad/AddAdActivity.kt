@@ -13,7 +13,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.main.carsales.R
 import com.main.carsales.databinding.ActivityAddAdBinding
-import com.main.carsales.main.MainActivity
 
 
 class AddAdActivity : AppCompatActivity() {

@@ -46,9 +46,11 @@ class AdAdapter(private val adList: ArrayList<Ad>)
     }
 
     override fun onBindViewHolder(holder: AdViewHolder, position: Int) {
-        holder.carBrandList.text = adList[position].car_brand
-        holder.carModelList.text = adList[position].car_model
-        holder.carPriceList.text = adList[position].price
+        with(holder){
+            carBrandList.text = adList[position].car_brand
+            carModelList.text = adList[position].car_model
+            carPriceList.text = adList[position].price
+        }
 
         Glide.with(holder.itemView.context)
             .load(adList[position].pic1)

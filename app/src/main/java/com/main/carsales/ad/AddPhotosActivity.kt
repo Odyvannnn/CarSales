@@ -3,16 +3,14 @@ package com.main.carsales.ad
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
-import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -84,7 +82,7 @@ class AddPhotosActivity : AppCompatActivity() {
         ActivityCompat.requestPermissions(
             activity,
             arrayOf(Manifest.permission.CAMERA),
-            Companion.CAMERA_PERMISSION_REQUEST_CODE
+            CAMERA_PERMISSION_REQUEST_CODE
         )
     }
 
