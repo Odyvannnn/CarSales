@@ -10,6 +10,8 @@ data class Ad(
     val car_drive_type: String? = "",
     val price: String? = "",
     val status: String? = "",
+    val username: String? = "",
+    val city: String? ="",
 
     val pic1: String? = "",
     val pic2: String? = "",
@@ -19,5 +21,6 @@ data class Ad(
     val pic6: String? = "",
     val pic7: String? = "",
     val pic8: String? = "",
-    val pic9: String? = ""
+    val pic9: String? = "",
+    val seller_uid: String? =""
 )

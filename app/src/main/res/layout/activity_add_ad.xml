@@ -111,6 +111,18 @@
             android:layout_height="50dp"
             android:inputType="number" />
 
+        <TextView
+            android:id="@+id/city_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/city" />
+
+        <Spinner
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:contentDescription="@string/city"/>
+
 
     </LinearLayout>
 

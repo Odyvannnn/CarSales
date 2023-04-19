@@ -151,7 +151,29 @@
                         android:layout_height="wrap_content"/>
                 </TableRow>
 
+                <TableRow
+                    android:divider="@drawable/vertical_divider_table"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/info_seller_city_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/city" />
+
+                    <TextView
+                        android:id="@+id/info_seller_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </TableRow>
+
             </TableLayout>
+
+            <Button
+                android:id="@+id/write_to_seller_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Написать продавцу" />
 
         </LinearLayout>
     </ScrollView>

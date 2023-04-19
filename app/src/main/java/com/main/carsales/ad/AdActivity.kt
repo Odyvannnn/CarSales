@@ -1,13 +1,21 @@
 package com.main.carsales.ad
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.main.carsales.adapters.GalleryAdapter
 import com.main.carsales.databinding.ActivityAdBinding
+import com.main.carsales.messages.ChatActivity
+import com.main.carsales.messages.FirstMessageActivity
 
 class AdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdBinding
+    private lateinit var auth: FirebaseAuth
     private val images = mutableListOf<String>()
 
 
@@ -15,9 +23,13 @@ class AdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAdBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = Firebase.auth
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setValuesToViews()
+
+        val toId = intent.getStringExtra("seller_uid")
+        val fromId = auth.uid
 
         binding.viewPager.apply {
             clipChildren = false
@@ -27,6 +39,14 @@ class AdActivity : AppCompatActivity() {
                 RecyclerView.OVER_SCROLL_NEVER
         }
         binding.viewPager.adapter = GalleryAdapter(images)
+        if (fromId == toId){
+            binding.writeToSellerButton.visibility = View.INVISIBLE
+        }
+        binding.writeToSellerButton.setOnClickListener {
+            val intent = Intent(this, FirstMessageActivity::class.java)
+            intent.putExtra("seller_uid", toId)
+            startActivity(intent)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -45,6 +65,7 @@ class AdActivity : AppCompatActivity() {
             infoCarDriveType.text = intent.getStringExtra("car_drive_type")
             infoEnginePower.text = intent.getStringExtra("engine_power")
             infoTransmission.text = intent.getStringExtra("transmission")
+            infoSellerCity.text = intent.getStringExtra("city")
         }
         for (i in 1..9){
             images.add(intent.getStringExtra("pic$i").toString())

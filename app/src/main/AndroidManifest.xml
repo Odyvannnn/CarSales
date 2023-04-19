@@ -4,7 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -17,6 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarSales"
         tools:targetApi="33">
+        <activity
+            android:name=".ad.AdsListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".messages.FirstMessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".messages.ChatActivity"
+            android:exported="false" />
         <activity
             android:name=".ad.AddPhotosActivity"
             android:exported="false" />

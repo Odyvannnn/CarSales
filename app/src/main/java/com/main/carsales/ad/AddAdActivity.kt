@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.main.carsales.R
@@ -19,11 +21,13 @@ class AddAdActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddAdBinding
     private val db = Firebase.firestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddAdBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = Firebase.auth
 
 
         binding.publishButton.setOnClickListener{
@@ -37,6 +41,8 @@ class AddAdActivity : AppCompatActivity() {
                 "transmission" to binding.transmission.selectedItem.toString(),
                 "car_drive_type" to binding.carDriveType.selectedItem.toString(),
                 "price" to binding.price.text.toString(),
+                "city" to binding.city.selectedItem.toString(),
+                "seller_uid" to auth.currentUser?.uid.toString(),
                 "status" to "waiting_photos"
             )
             adInfo["mileage"] += " км"
@@ -67,6 +73,7 @@ class AddAdActivity : AppCompatActivity() {
         val spinnerTransmission = findViewById<Spinner>(R.id.transmission)
         val spinnerCarDriveType = findViewById<Spinner>(R.id.car_drive_type)
         val spinnerYear = findViewById<Spinner>(R.id.year)
+        val spinnerCity = findViewById<Spinner>(R.id.city)
 
         fun adapterSpinner(array: Array<String>, spinner: Spinner){
             val adapterSpinner =
@@ -79,6 +86,7 @@ class AddAdActivity : AppCompatActivity() {
         adapterSpinner(resources.getStringArray(R.array.car_transmission_array), spinnerTransmission)
         adapterSpinner(resources.getStringArray(R.array.car_drive_type_array), spinnerCarDriveType)
         adapterSpinner(resources.getStringArray(R.array.year_array), spinnerYear)
+        adapterSpinner(resources.getStringArray(R.array.cities_array), spinnerCity)
 
         binding.carBrand.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -94,6 +102,9 @@ class AddAdActivity : AppCompatActivity() {
                     }
                     3 -> {
                         adapterSpinner(resources.getStringArray(R.array.year_array), spinnerYear)
+                    }
+                    4 -> {
+                        adapterSpinner(resources.getStringArray(R.array.cities_array), spinnerCity)
                     }
                 }
             }
