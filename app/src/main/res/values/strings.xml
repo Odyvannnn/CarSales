@@ -49,5 +49,7 @@
     <string name="ph_driver_seat">Фото водительского сидения</string>
     <string name="ph_motor">Фото моторного отсека</string>
     <string name="ph_end">Все фото сделаны!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

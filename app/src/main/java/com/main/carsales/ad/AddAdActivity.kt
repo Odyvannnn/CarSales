@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.main.carsales.R
@@ -19,11 +21,13 @@ class AddAdActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddAdBinding
     private val db = Firebase.firestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddAdBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = Firebase.auth
 
 
         binding.publishButton.setOnClickListener{
@@ -37,6 +41,7 @@ class AddAdActivity : AppCompatActivity() {
                 "transmission" to binding.transmission.selectedItem.toString(),
                 "car_drive_type" to binding.carDriveType.selectedItem.toString(),
                 "price" to binding.price.text.toString(),
+                "seller_uid" to auth.currentUser?.uid.toString(),
                 "status" to "waiting_photos"
             )
             adInfo["mileage"] += " км"

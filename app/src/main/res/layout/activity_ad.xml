@@ -153,6 +153,12 @@
 
             </TableLayout>
 
+            <Button
+                android:id="@+id/write_to_seller_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Написать продавцу" />
+
         </LinearLayout>
     </ScrollView>
 

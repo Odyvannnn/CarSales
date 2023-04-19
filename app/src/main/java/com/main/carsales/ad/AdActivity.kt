@@ -1,10 +1,12 @@
 package com.main.carsales.ad
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.main.carsales.adapters.GalleryAdapter
 import com.main.carsales.databinding.ActivityAdBinding
+import com.main.carsales.messages.ChatActivity
 
 class AdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdBinding
@@ -19,6 +21,8 @@ class AdActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setValuesToViews()
 
+        val toId = intent.getStringExtra("seller_uid")
+
         binding.viewPager.apply {
             clipChildren = false
             clipToPadding = false
@@ -27,6 +31,11 @@ class AdActivity : AppCompatActivity() {
                 RecyclerView.OVER_SCROLL_NEVER
         }
         binding.viewPager.adapter = GalleryAdapter(images)
+        binding.writeToSellerButton.setOnClickListener {
+            val intent = Intent(this, ChatActivity::class.java)
+            intent.putExtra("seller_uid", toId)
+            startActivity(intent)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

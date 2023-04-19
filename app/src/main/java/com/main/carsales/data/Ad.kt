@@ -19,5 +19,6 @@ data class Ad(
     val pic6: String? = "",
     val pic7: String? = "",
     val pic8: String? = "",
-    val pic9: String? = ""
+    val pic9: String? = "",
+    val seller_uid: String? =""
 )

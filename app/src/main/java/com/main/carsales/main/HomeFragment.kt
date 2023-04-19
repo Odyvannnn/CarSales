@@ -67,6 +67,7 @@ class HomeFragment : Fragment() {
                                 putExtra("pic7", adList[position].pic7)
                                 putExtra("pic8", adList[position].pic8)
                                 putExtra("pic9", adList[position].pic9)
+                                putExtra("seller_uid", adList[position].seller_uid)
                             }
                             startActivity(intent)
                         }

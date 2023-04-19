@@ -13,8 +13,10 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.main.carsales.R
+import com.main.carsales.data.User
 import com.main.carsales.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
@@ -94,6 +96,7 @@ class RegisterFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(ContentValues.TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
+                    saveUserToFirebaseDatabase()
                     Toast.makeText(
                         context, "Пользователь создан.",
                         Toast.LENGTH_SHORT
@@ -114,5 +117,17 @@ class RegisterFragment : Fragment() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
+    }
+
+    private fun saveUserToFirebaseDatabase() {
+        val uid = FirebaseAuth.getInstance().uid  ?: ""
+        val ref = FirebaseDatabase.getInstance("https://car-sales-33dcf-default-rtdb.europe-west1.firebasedatabase.app")
+            .getReference("/users/$uid")
+        val user = User(uid, binding.usernameRegister.text.toString())
+
+        ref.setValue(user)
+            .addOnSuccessListener {
+                Log.d("RegisterFragment", "User saved to database")
+            }
     }
 }
