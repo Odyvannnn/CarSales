@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.main.carsales.adapters.GalleryAdapter
 import com.main.carsales.databinding.ActivityAdBinding
-import com.main.carsales.messages.ChatActivity
 import com.main.carsales.messages.FirstMessageActivity
 
 class AdActivity : AppCompatActivity() {
@@ -38,15 +39,26 @@ class AdActivity : AppCompatActivity() {
             (getChildAt(0) as RecyclerView).overScrollMode =
                 RecyclerView.OVER_SCROLL_NEVER
         }
+
         binding.viewPager.adapter = GalleryAdapter(images)
         if (fromId == toId){
             binding.writeToSellerButton.visibility = View.INVISIBLE
         }
+        binding.viewPager.setPageTransformer(getTransformation())
+
         binding.writeToSellerButton.setOnClickListener {
             val intent = Intent(this, FirstMessageActivity::class.java)
             intent.putExtra("seller_uid", toId)
             startActivity(intent)
         }
+    }
+    private fun getTransformation(): CompositePageTransformer{
+        val transform = CompositePageTransformer()
+        transform.addTransformer(MarginPageTransformer(30))
+        transform.addTransformer{page, position ->
+            page.scaleY = 0.85f + (1 - kotlin.math.abs(position)) * 0.15f
+        }
+        return transform
     }
 
     override fun onSupportNavigateUp(): Boolean {
