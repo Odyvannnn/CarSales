@@ -6,127 +6,136 @@
     android:layout_height="match_parent"
     tools:context=".ad.AddAdActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/car_brand_text"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/car_brand" />
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Spinner
-            android:id="@+id/car_brand"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:contentDescription="@string/car_brand"/>
+            <TextView
+                android:id="@+id/car_brand_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/car_brand" />
 
-        <TextView
-            android:id="@+id/car_model_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/car_model" />
+            <Spinner
+                android:id="@+id/car_brand"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="@string/car_brand" />
 
-        <Spinner
-            android:id="@+id/car_model"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:contentDescription="@string/car_model"/>
+            <TextView
+                android:id="@+id/car_model_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/car_model" />
 
-        <TextView
-            android:id="@+id/year_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/year" />
+            <Spinner
+                android:id="@+id/car_model"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="@string/car_model" />
 
-        <Spinner
-            android:id="@+id/year"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:contentDescription="@string/year"/>
+            <TextView
+                android:id="@+id/year_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/year" />
 
-        <TextView
-            android:id="@+id/mileage_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/mileage" />
+            <Spinner
+                android:id="@+id/year"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="@string/year" />
 
-        <EditText
-            android:id="@+id/mileage"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/mileage_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mileage" />
 
-        <TextView
-            android:id="@+id/engine_power_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/engine_power" />
+            <EditText
+                android:id="@+id/mileage"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:autofillHints="Пробег в километрах" />
 
-        <EditText
-            android:id="@+id/engine_power"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/engine_power_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/engine_power" />
 
-        <TextView
-            android:id="@+id/transmission_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/transmission" />
+            <EditText
+                android:id="@+id/engine_power"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:autofillHints="Мощность двигателя в лошадиных силах" />
 
-        <Spinner
-            android:id="@+id/transmission"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:contentDescription="@string/transmission"/>
+            <TextView
+                android:id="@+id/transmission_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/transmission" />
 
-        <TextView
-            android:id="@+id/car_drive_type_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/car_drive_type" />
+            <Spinner
+                android:id="@+id/transmission"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="@string/transmission" />
 
-        <Spinner
-            android:id="@+id/car_drive_type"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:contentDescription="@string/car_drive_type"/>
+            <TextView
+                android:id="@+id/car_drive_type_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/car_drive_type" />
 
-        <TextView
-            android:id="@+id/price_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/price" />
+            <Spinner
+                android:id="@+id/car_drive_type"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="@string/car_drive_type" />
 
-        <EditText
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/price_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/price" />
 
-        <TextView
-            android:id="@+id/city_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/city" />
+            <EditText
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="number"
+                android:autofillHints="Цена в рублях" />
 
-        <Spinner
-            android:id="@+id/city"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:contentDescription="@string/city"
-            />
+            <TextView
+                android:id="@+id/city_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/city" />
+
+            <Spinner
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="@string/city" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
 
     <Button
         android:id="@+id/publish_button"

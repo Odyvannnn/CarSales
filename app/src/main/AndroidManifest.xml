@@ -21,30 +21,38 @@
         tools:targetApi="33">
         <activity
             android:name=".ad.AdsListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".messages.FirstMessageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".messages.ChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".ad.AddPhotosActivity"
             android:exported="false"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:configChanges="orientation|screenSize|uiMode"/>
         <activity
             android:name=".ad.AdActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".ad.AddAdActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".main.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".auth.AuthActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

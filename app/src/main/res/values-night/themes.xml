@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.CarSales" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.CarSales" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/green_700</item>
         <item name="colorPrimaryVariant">@color/green_700</item>
@@ -10,15 +10,18 @@
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorOnSecondary</item>
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/light_gray</item>
     </style>
-    <style name="SpinnerTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="SpinnerTheme" parent="Theme.MaterialComponents.DayNight">
         <item name="android:textColor">@color/light_gray</item>
     </style>
     <style name="ListItemTheme" parent="Theme.CarSales">
         <item name="android:background">?attr/colorPrimary</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="CameraButton">
+        <item name="android:background">@drawable/camera_button</item>
     </style>
 </resources>
