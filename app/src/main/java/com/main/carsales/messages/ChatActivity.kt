@@ -31,6 +31,8 @@ class ChatActivity : AppCompatActivity() {
         toUser = intent.getParcelableExtra(uid)
         supportActionBar?.title = toUser?.username
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding.recyclerViewChatLog.adapter = adapter
         binding.recyclerViewChatLog.layoutManager = LinearLayoutManager(this)
 
@@ -103,5 +105,10 @@ class ChatActivity : AppCompatActivity() {
         val latestChatsToReference = FirebaseDatabase.getInstance("https://car-sales-33dcf-default-rtdb.europe-west1.firebasedatabase.app")
             .getReference("/latest-messages/$toId/$fromId")
         latestChatsToReference.setValue(chatMessage)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }

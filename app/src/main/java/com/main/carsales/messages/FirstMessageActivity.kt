@@ -22,6 +22,8 @@ class FirstMessageActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         binding.sendMessageButton.setOnClickListener {
             performSendMessage()
         }
@@ -58,5 +60,10 @@ class FirstMessageActivity : AppCompatActivity() {
         val latestChatsToReference = FirebaseDatabase.getInstance("https://car-sales-33dcf-default-rtdb.europe-west1.firebasedatabase.app")
             .getReference("/latest-messages/$toId/$fromId")
         latestChatsToReference.setValue(chatMessage)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }
