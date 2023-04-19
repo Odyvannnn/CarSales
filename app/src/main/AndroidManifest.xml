@@ -20,6 +20,9 @@
         android:theme="@style/Theme.CarSales"
         tools:targetApi="33">
         <activity
+            android:name=".ad.AdsListActivity"
+            android:exported="false" />
+        <activity
             android:name=".messages.FirstMessageActivity"
             android:exported="false" />
         <activity
