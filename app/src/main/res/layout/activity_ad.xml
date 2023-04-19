@@ -17,9 +17,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:divider="@drawable/horizontal_divider"
-            android:showDividers="middle">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,17 +32,23 @@
                 <TextView
                     android:id="@+id/car_brand"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/car_model"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/year"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
@@ -52,6 +56,9 @@
                 android:id="@+id/price"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -64,107 +71,112 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="8dp"
+                android:padding="8dp"
                 android:divider="@drawable/horizontal_divider"
                 android:showDividers="middle"
-                android:layout_gravity="fill">
+                android:layout_gravity="fill"
+                android:stretchColumns="*">
 
-                <TableRow
-                    android:divider="@drawable/vertical_divider_table"
-                    android:showDividers="middle">
+                <TableRow>
 
                     <TextView
                         android:id="@+id/info_year_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Год выпуска" />
+                        android:text="Год выпуска"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/info_year"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
-                <TableRow
-                    android:divider="@drawable/vertical_divider_table"
-                    android:showDividers="middle">
+                <TableRow>
 
                     <TextView
                         android:id="@+id/info_mileage_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Пробег" />
+                        android:text="Пробег"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/info_mileage"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
-                <TableRow
-                    android:divider="@drawable/vertical_divider_table"
-                    android:showDividers="middle">
+                <TableRow>
 
                     <TextView
                         android:id="@+id/info_engine_power_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Мощность двигателя" />
+                        android:text="Мощность двигателя"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/info_engine_power"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
-                <TableRow
-                    android:divider="@drawable/vertical_divider_table"
-                    android:showDividers="middle">
+                <TableRow>
 
                     <TextView
                         android:id="@+id/info_car_drive_type_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Привод" />
+                        android:text="Привод"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/info_car_drive_type"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
-                <TableRow
-                    android:divider="@drawable/vertical_divider_table"
-                    android:showDividers="middle">
+                <TableRow>
 
                     <TextView
                         android:id="@+id/info_transmission_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="КПП" />
+                        android:text="КПП"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/info_transmission"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
-                <TableRow
-                    android:divider="@drawable/vertical_divider_table"
-                    android:showDividers="middle">
+                <TableRow>
 
                     <TextView
                         android:id="@+id/info_seller_city_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/city" />
+                        android:text="@string/city"
+                        android:textSize="16sp"/>
 
                     <TextView
                         android:id="@+id/info_seller_city"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
             </TableLayout>

@@ -40,7 +40,6 @@ class AddPhotosActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         binding = ActivityAddPhotosBinding.inflate(layoutInflater)
         requestCameraPermission(this)
         startCamera()

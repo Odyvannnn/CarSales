@@ -10,7 +10,6 @@
         android:background="@drawable/round_message_from"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="#090909"
         android:padding="16dp"
         android:textSize="20sp"
         android:layout_marginStart="16dp"

@@ -28,7 +28,7 @@ class AddAdActivity : AppCompatActivity() {
         binding = ActivityAddAdBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.publishButton.setOnClickListener{
             val fileName = System.currentTimeMillis().toString()
@@ -77,7 +77,7 @@ class AddAdActivity : AppCompatActivity() {
 
         fun adapterSpinner(array: Array<String>, spinner: Spinner){
             val adapterSpinner =
-                ArrayAdapter(applicationContext, android.R.layout.simple_spinner_item, array)
+                ArrayAdapter(applicationContext, R.layout.spinner_item, array)
             adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapterSpinner
         }
@@ -137,6 +137,11 @@ class AddAdActivity : AppCompatActivity() {
             binding.price.error = null
         }
         return valid
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 
 }

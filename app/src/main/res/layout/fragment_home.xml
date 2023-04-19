@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.HomeFragment"
-    android:background="@color/purple_500">
+    tools:context=".main.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,11 +26,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
                     android:divider="@drawable/horizontal_divider"
-                    android:paddingStart="8dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="8dp"
+                    android:padding="16dp"
                     android:showDividers="middle"
-                    android:stretchColumns="1"
+                    android:stretchColumns="*"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +42,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="start|center"
                                     android:text="@string/car_brand"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,7 +51,6 @@
                                     android:id="@+id/car_brand"
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
-                                    android:layout_gravity="end"
                                     android:contentDescription="@string/car_brand"
                                     android:gravity="end"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +64,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="start|center"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
                                     android:text="@string/car_model"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@id/car_brand" />
@@ -74,7 +74,6 @@
                                     android:id="@+id/car_model"
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
-                                    android:layout_gravity="end"
                                     android:contentDescription="@string/car_model"
                                     android:gravity="end"
                                     app:layout_constraintStart_toStartOf="parent"
