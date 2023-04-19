@@ -8,8 +8,6 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.main.carsales.R
 import com.main.carsales.data.User
 import com.main.carsales.data.ChatMessage
@@ -20,9 +18,7 @@ import com.xwray.groupie.GroupieAdapter
 
 class ChatActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChatBinding
-
     val adapter = GroupieAdapter()
-
     var toUser: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +28,6 @@ class ChatActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         val uid = FirebaseAuth.getInstance().uid  ?: ""
-
         toUser = intent.getParcelableExtra(uid)
         supportActionBar?.title = toUser?.username
 
@@ -81,21 +76,10 @@ class ChatActivity : AppCompatActivity() {
         })
     }
 
-    private fun getToId(): String{
-        val getSellerUid = intent.getStringExtra("seller_uid")
-        val toId: String
-        if (getSellerUid != null){
-            toId = getSellerUid
-        }else{
-            toId = toUser?.uid ?: ""
-        }
-        return toId
-    }
-
     private fun performSendMessage(){
         val text = binding.writeMessageText.text.toString()
         val fromId = FirebaseAuth.getInstance().uid
-        val toId = getToId()
+        val toId = toUser?.uid ?: ""
         val reference = FirebaseDatabase.getInstance("https://car-sales-33dcf-default-rtdb.europe-west1.firebasedatabase.app")
             .getReference("/user-messages/$fromId/$toId").push()
         if (fromId == null) return

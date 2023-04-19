@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.main.carsales.adapters.GalleryAdapter
 import com.main.carsales.databinding.ActivityAdBinding
 import com.main.carsales.messages.ChatActivity
+import com.main.carsales.messages.FirstMessageActivity
 
 class AdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdBinding
@@ -32,7 +33,7 @@ class AdActivity : AppCompatActivity() {
         }
         binding.viewPager.adapter = GalleryAdapter(images)
         binding.writeToSellerButton.setOnClickListener {
-            val intent = Intent(this, ChatActivity::class.java)
+            val intent = Intent(this, FirstMessageActivity::class.java)
             intent.putExtra("seller_uid", toId)
             startActivity(intent)
         }
@@ -54,6 +55,7 @@ class AdActivity : AppCompatActivity() {
             infoCarDriveType.text = intent.getStringExtra("car_drive_type")
             infoEnginePower.text = intent.getStringExtra("engine_power")
             infoTransmission.text = intent.getStringExtra("transmission")
+            infoSellerCity.text = intent.getStringExtra("city")
         }
         for (i in 1..9){
             images.add(intent.getStringExtra("pic$i").toString())
