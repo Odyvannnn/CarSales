@@ -4,7 +4,6 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +17,9 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -41,22 +43,51 @@ class AddPhotosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddPhotosBinding.inflate(layoutInflater)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        supportActionBar?.hide()
         requestCameraPermission(this)
         startCamera()
+        loadHints(R.drawable.ph_hint_fr)
         setContentView(binding.root)
-        requestCameraPermission(this)
         binding.continueButton.visibility = View.INVISIBLE
         binding.imageCaptureButton.setOnClickListener {
             when (imageCount){
-                0 -> binding.photoHintText.text = resources.getString(R.string.ph_left)
-                1 -> binding.photoHintText.text = resources.getString(R.string.ph_back)
-                2 -> binding.photoHintText.text = resources.getString(R.string.ph_right)
-                3 -> binding.photoHintText.text = resources.getString(R.string.ph_interior)
-                4 -> binding.photoHintText.text = resources.getString(R.string.ph_str_wheel)
-                5 -> binding.photoHintText.text = resources.getString(R.string.ph_knob)
-                6 -> binding.photoHintText.text = resources.getString(R.string.ph_driver_seat)
-                7 -> binding.photoHintText.text = resources.getString(R.string.ph_motor)
-                8 -> binding.photoHintText.text = resources.getString(R.string.ph_end)
+                0 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_left)
+                    loadHints(R.drawable.ph_hint_left)
+                }
+                1 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_back)
+                    loadHints(R.drawable.ph_hint_back)
+                }
+                2 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_right)
+                    loadHints(R.drawable.ph_hint_right)
+                }
+                3 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_interior)
+                    loadHints(R.drawable.ph_hint_interior)
+                }
+                4 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_str_wheel)
+                    loadHints(R.drawable.ph_hint_str_wheel)
+                }
+                5 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_knob)
+                    loadHints(R.drawable.ph_hint_knob)
+                }
+                6 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_driver_seat)
+                    loadHints(R.drawable.ph_hint_driver_seat)
+                }
+                7 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_motor)
+                    loadHints(R.drawable.ph_hint_motor)
+                }
+                8 -> {
+                    binding.photoHintText.text = resources.getString(R.string.ph_end)
+                    binding.imageViewHint.visibility = View.INVISIBLE
+                }
             }
             takePhoto()
             imageCount++
@@ -158,6 +189,14 @@ class AddPhotosActivity : AppCompatActivity() {
 
     companion object {
         private const val CAMERA_PERMISSION_REQUEST_CODE = 101
+    }
+
+    private fun loadHints(uri: Int){
+        Glide.with(this)
+            .load(uri)
+            .centerCrop()
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
+            .into(binding.imageViewHint)
     }
 
 }

@@ -35,7 +35,6 @@
             android:name=".ad.AddPhotosActivity"
             android:exported="false"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             android:configChanges="orientation|screenSize|uiMode"/>
         <activity
             android:name=".ad.AdActivity"

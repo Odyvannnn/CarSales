@@ -11,16 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="163dp" />
+        tools:layout_editor_absoluteY="0dp"
+        app:scaleType="fitCenter">
+
+    </androidx.camera.view.PreviewView>
+
+    <ImageView
+        android:id="@+id/imageViewHint"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/photo_hint_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ph_front"
+        android:gravity="center"
         android:layout_marginTop="50dp"
+        android:shadowColor="@color/black"
+        android:shadowRadius="0.01"
+        android:text="@string/ph_front"
         android:textColor="#ffffffff"
-        android:textSize="24dp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +44,7 @@
         android:id="@+id/image_capture_button"
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="30dp"
         style="@style/CameraButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,12 +53,11 @@
     <Button
         android:id="@+id/continue_button"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="50dp"
-        android:layout_marginEnd="40dp"
         android:text="Продолжить"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@id/image_capture_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

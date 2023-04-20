@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.main.carsales.R
 import com.main.carsales.data.Ad
 
@@ -54,6 +56,8 @@ class AdAdapter(private val adList: ArrayList<Ad>)
 
         Glide.with(holder.itemView.context)
             .load(adList[position].pic1)
+            .centerCrop()
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(14)))
             .into(holder.carImageView)
     }
 }
