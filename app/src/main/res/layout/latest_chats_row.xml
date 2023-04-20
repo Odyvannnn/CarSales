@@ -5,20 +5,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="10dp"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/ListItemTheme">
+        style="@style/ListItemTheme"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
         <TextView
             android:id="@+id/latestChatUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
             android:textSize="32sp"
             android:textStyle="bold"
             style="@style/ListItemTheme"
@@ -28,15 +28,41 @@
 
         <TextView
             android:id="@+id/latestChatMessage"
+            style="@style/ListItemTheme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            style="@style/ListItemTheme"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewLatestChats"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/latestChatUsername"
             app:layout_constraintTop_toBottomOf="@+id/latestChatUsername" />
+
+        <TextView
+            android:id="@id/car_brand"
+            style="@style/ListItemTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/latestChatMessage"
+            app:layout_constraintTop_toBottomOf="@+id/latestChatUsername">
+        </TextView>
+
+        <TextView
+            android:id="@+id/car_model"
+            style="@style/ListItemTheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            app:layout_constraintTop_toBottomOf="@+id/latestChatUsername"
+            app:layout_constraintStart_toEndOf="@id/car_brand">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/imageViewLatestChats"
+            android:layout_width="130dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

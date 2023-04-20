@@ -46,10 +46,6 @@
             android:configChanges="orientation|screenSize"/>
         <activity
             android:name=".main.MainActivity"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
-        <activity
-            android:name=".auth.AuthActivity"
             android:exported="true"
             android:configChanges="orientation|screenSize">
             <intent-filter>
@@ -57,6 +53,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".auth.AuthActivity"
+            android:exported="false"
+            android:configChanges="orientation|screenSize">
         </activity>
     </application>
 

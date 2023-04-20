@@ -1,5 +1,10 @@
 package com.main.carsales.data
 
-class ChatMessage(val id: String, val text: String, val toId: String, val fromId: String,val timestamp: Long){
-    constructor() : this("", "", "", "", -1)
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+class ChatMessage(val id: String, val text: String, val toId: String, val fromId: String,
+                  val timestamp: Long, val adId: String) : Parcelable {
+    constructor() : this("", "", "", "", -1, "")
 }

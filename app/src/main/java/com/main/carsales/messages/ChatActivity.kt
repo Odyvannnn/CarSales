@@ -82,6 +82,7 @@ class ChatActivity : AppCompatActivity() {
         val text = binding.writeMessageText.text.toString()
         val fromId = FirebaseAuth.getInstance().uid
         val toId = toUser?.uid ?: ""
+        val adId = intent.getStringExtra("adId")
         val reference = FirebaseDatabase.getInstance("https://car-sales-33dcf-default-rtdb.europe-west1.firebasedatabase.app")
             .getReference("/user-messages/$fromId/$toId").push()
         if (fromId == null) return
@@ -90,7 +91,8 @@ class ChatActivity : AppCompatActivity() {
             .getReference("/user-messages/$toId/$fromId").push()
 
         val chatMessage = ChatMessage(reference.key!!, text, fromId,
-            toId, System.currentTimeMillis() / 1000)
+            toId, System.currentTimeMillis() / 1000, adId!!
+        )
         reference.setValue(chatMessage)
             .addOnSuccessListener {
                 binding.writeMessageText.text.clear()

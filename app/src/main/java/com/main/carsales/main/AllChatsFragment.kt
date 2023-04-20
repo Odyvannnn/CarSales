@@ -12,7 +12,6 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.main.carsales.R
 import com.main.carsales.data.ChatMessage
 import com.main.carsales.databinding.FragmentAllChatsBinding
 import com.main.carsales.messages.ChatActivity
@@ -38,11 +37,12 @@ class AllChatsFragment : Fragment()  {
         binding.latestChatsRecyclerView.adapter = adapter
         binding.latestChatsRecyclerView.layoutManager = LinearLayoutManager(context)
         listenForLatestChats()
-        verifyIsUserLoggedIn()
         adapter.setOnItemClickListener { item, view ->
             val intent = Intent(context, ChatActivity::class.java)
             val row = item as LatestChatsRow
+            val adId = row.chatAdIdItem?.adId
             intent.putExtra(uid, row.chatPartnerUser)
+            intent.putExtra("adId", adId)
             startActivity(intent)
         }
     }
@@ -88,14 +88,5 @@ class AllChatsFragment : Fragment()  {
         })
     }
     val adapter = GroupieAdapter()
-
-    private fun verifyIsUserLoggedIn() {
-        val uid = FirebaseAuth.getInstance().uid
-        if (uid == null){
-            val intent = Intent(context, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-        }
-    }
 
 }

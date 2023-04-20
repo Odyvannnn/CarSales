@@ -1,5 +1,7 @@
 package com.main.carsales.data
 
+import com.google.firebase.firestore.DocumentId
+
 data class Ad(
     val car_brand: String? = "",
     val car_model: String? = "",
@@ -22,5 +24,8 @@ data class Ad(
     val pic7: String? = "",
     val pic8: String? = "",
     val pic9: String? = "",
-    val seller_uid: String? =""
+    val seller_uid: String? ="",
+
+    @DocumentId
+    val adId: String? =""
 )

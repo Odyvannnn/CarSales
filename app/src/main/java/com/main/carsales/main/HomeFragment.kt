@@ -10,10 +10,12 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.main.carsales.R
 import com.main.carsales.ad.AdsListActivity
+import com.main.carsales.auth.AuthActivity
 import com.main.carsales.data.Ad
 import com.main.carsales.databinding.FragmentHomeBinding
 
@@ -28,6 +30,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        verifyIsUserLoggedIn()
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -98,6 +101,14 @@ class HomeFragment : Fragment() {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
+        }
+    }
+    private fun verifyIsUserLoggedIn() {
+        val uid = FirebaseAuth.getInstance().uid
+        if (uid == null){
+            val intent = Intent(context, AuthActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
     }
 }

@@ -6,13 +6,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.main.carsales.R
 import com.main.carsales.data.ChatMessage
-import com.main.carsales.data.User
-import com.main.carsales.databinding.ActivityChatBinding
 import com.main.carsales.databinding.ActivityFirstMessageBinding
 
 class FirstMessageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFirstMessageBinding
-    var toUser: User? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +29,7 @@ class FirstMessageActivity : AppCompatActivity() {
     private fun performSendMessage(){
         val text = binding.writeMessageText.text.toString()
         val fromId = FirebaseAuth.getInstance().uid
+        val adId = intent.getStringExtra("adId")
         val toId = intent.getStringExtra("seller_uid")
         val reference = FirebaseDatabase.getInstance("https://car-sales-33dcf-default-rtdb.europe-west1.firebasedatabase.app")
             .getReference("/user-messages/$fromId/$toId").push()
@@ -41,10 +39,11 @@ class FirstMessageActivity : AppCompatActivity() {
             .getReference("/user-messages/$toId/$fromId").push()
 
         val chatMessage = toId?.let {
-            ChatMessage(
-                reference.key!!, text, fromId,
-                it, System.currentTimeMillis() / 1000
-            )
+                ChatMessage(
+                    reference.key!!, text, fromId,
+                    it, System.currentTimeMillis() / 1000, adId!!
+                )
+
         }
         reference.setValue(chatMessage)
             .addOnSuccessListener {

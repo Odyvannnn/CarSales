@@ -30,6 +30,7 @@ class AdActivity : AppCompatActivity() {
         setValuesToViews()
 
         val toId = intent.getStringExtra("seller_uid")
+        val adId = intent.getStringExtra("adId")
         val fromId = auth.uid
 
         binding.viewPager.apply {
@@ -49,6 +50,7 @@ class AdActivity : AppCompatActivity() {
         binding.writeToSellerButton.setOnClickListener {
             val intent = Intent(this, FirstMessageActivity::class.java)
             intent.putExtra("seller_uid", toId)
+            intent.putExtra("adId", adId)
             startActivity(intent)
         }
     }
