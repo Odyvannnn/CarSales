@@ -35,7 +35,7 @@ class AddPhotosActivity : AppCompatActivity() {
     private val db = Firebase.firestore
     private var imageCapture: ImageCapture? = null
     private var imageCount = 0
-
+    private var imageCountSent = 1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,8 +58,8 @@ class AddPhotosActivity : AppCompatActivity() {
                 7 -> binding.photoHintText.text = resources.getString(R.string.ph_motor)
                 8 -> binding.photoHintText.text = resources.getString(R.string.ph_end)
             }
-            imageCount++
             takePhoto()
+            imageCount++
             if (imageCount >= 9) {
                 binding.imageCaptureButton.visibility = View.INVISIBLE
                 binding.continueButton.visibility = View.VISIBLE
@@ -139,10 +139,11 @@ class AddPhotosActivity : AppCompatActivity() {
         uploadTask.addOnSuccessListener {
             storageRef.child("photos/$sd").downloadUrl.addOnSuccessListener {
                 val map = HashMap<String, Any>()
-                map["pic$imageCount"] = it.toString()
+                map["pic$imageCountSent"] = it.toString()
                 if (fileName != null) {
                     db.collection("ads").document(fileName).update(map)
-                    Toast.makeText(this, "Фото сохранено", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Фото загружено", Toast.LENGTH_SHORT).show()
+                    imageCountSent++
                 }
             }.addOnFailureListener {
             }
