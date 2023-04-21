@@ -26,6 +26,8 @@
     <string name="transmission">Коробка</string>
     <string name="car_drive_type">Привод</string>
     <string name="price">Цена</string>
+    <string name="engine_type">Тип двигателя</string>
+    <string name="info_ad">Описание</string>
 
     <string-array name="car_transmission_array">
         <item>Автоматическая</item>
@@ -37,6 +39,12 @@
         <item>Полный</item>
         <item>Передний</item>
         <item>Задний</item>
+    </string-array>
+    <string-array name="car_engine_type">
+        <item>Бензин</item>
+        <item>Дизель</item>
+        <item>Гибрид</item>
+        <item>Электро</item>
     </string-array>
 
     <string name="ph_front">Фото спереди</string>

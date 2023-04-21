@@ -38,11 +38,13 @@ class AddAdActivity : AppCompatActivity() {
                 "year" to binding.year.selectedItem.toString(),
                 "mileage" to binding.mileage.text.toString(),
                 "engine_power" to binding.enginePower.text.toString(),
+                "engine_type" to binding.engineType.selectedItem.toString(),
                 "transmission" to binding.transmission.selectedItem.toString(),
                 "car_drive_type" to binding.carDriveType.selectedItem.toString(),
                 "price" to binding.price.text.toString(),
                 "city" to binding.city.selectedItem.toString(),
                 "seller_uid" to auth.currentUser?.uid.toString(),
+                "info_ad" to binding.infoAd.text.toString(),
                 "status" to "waiting_photos"
             )
             adInfo["mileage"] += " км"
@@ -74,6 +76,7 @@ class AddAdActivity : AppCompatActivity() {
         val spinnerCarDriveType = findViewById<Spinner>(R.id.car_drive_type)
         val spinnerYear = findViewById<Spinner>(R.id.year)
         val spinnerCity = findViewById<Spinner>(R.id.city)
+        val spinnerEngineType = findViewById<Spinner>(R.id.engine_type)
 
         fun adapterSpinner(array: Array<String>, spinner: Spinner){
             val adapterSpinner =
@@ -87,6 +90,7 @@ class AddAdActivity : AppCompatActivity() {
         adapterSpinner(resources.getStringArray(R.array.car_drive_type_array), spinnerCarDriveType)
         adapterSpinner(resources.getStringArray(R.array.year_array), spinnerYear)
         adapterSpinner(resources.getStringArray(R.array.cities_array), spinnerCity)
+        adapterSpinner(resources.getStringArray(R.array.car_engine_type), spinnerEngineType)
 
         binding.carBrand.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -101,10 +105,13 @@ class AddAdActivity : AppCompatActivity() {
                         adapterSpinner(resources.getStringArray(R.array.toyota_models), spinnerModel)
                     }
                     3 -> {
-                        adapterSpinner(resources.getStringArray(R.array.year_array), spinnerYear)
+                        adapterSpinner(resources.getStringArray(R.array.renault_models), spinnerModel)
                     }
                     4 -> {
-                        adapterSpinner(resources.getStringArray(R.array.cities_array), spinnerCity)
+                        adapterSpinner(resources.getStringArray(R.array.peugeot_models), spinnerModel)
+                    }
+                    5 -> {
+                        adapterSpinner(resources.getStringArray(R.array.volvo_models), spinnerModel)
                     }
                 }
             }
@@ -135,6 +142,13 @@ class AddAdActivity : AppCompatActivity() {
             valid = false
         } else {
             binding.price.error = null
+        }
+        val infoAd = binding.infoAd.text.toString()
+        if (TextUtils.isEmpty(infoAd)) {
+            binding.infoAd.error = "Создайте описание."
+            valid = false
+        } else {
+            binding.infoAd.error = null
         }
         return valid
     }

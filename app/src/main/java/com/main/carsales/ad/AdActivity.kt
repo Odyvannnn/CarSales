@@ -78,8 +78,10 @@ class AdActivity : AppCompatActivity() {
             infoMileage.text = intent.getStringExtra("mileage")
             infoCarDriveType.text = intent.getStringExtra("car_drive_type")
             infoEnginePower.text = intent.getStringExtra("engine_power")
+            infoEngineType.text = intent.getStringExtra("engine_type")
             infoTransmission.text = intent.getStringExtra("transmission")
             infoSellerCity.text = intent.getStringExtra("city")
+            infoAd.text = intent.getStringExtra("info_ad")
         }
         for (i in 1..9){
             images.add(intent.getStringExtra("pic$i").toString())

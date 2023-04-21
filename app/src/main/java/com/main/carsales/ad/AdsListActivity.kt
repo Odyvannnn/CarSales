@@ -59,6 +59,7 @@ class AdsListActivity : AppCompatActivity() {
                                 putExtra("mileage", adList[position].mileage)
                                 putExtra("car_drive_type", adList[position].car_drive_type)
                                 putExtra("engine_power", adList[position].engine_power)
+                                putExtra("engine_type", adList[position].engine_type)
                                 putExtra("transmission", adList[position].transmission)
                                 putExtra("pic1", adList[position].pic1)
                                 putExtra("pic2", adList[position].pic2)
@@ -70,6 +71,7 @@ class AdsListActivity : AppCompatActivity() {
                                 putExtra("pic8", adList[position].pic8)
                                 putExtra("pic9", adList[position].pic9)
                                 putExtra("seller_uid", adList[position].seller_uid)
+                                putExtra("info_ad", adList[position].info_ad)
                                 putExtra("city", adList[position].city)
                                 putExtra("adId", adList[position].adId)
                             }

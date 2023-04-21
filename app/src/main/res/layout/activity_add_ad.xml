@@ -83,6 +83,18 @@
                 android:autofillHints="Мощность двигателя в лошадиных силах" />
 
             <TextView
+                android:id="@+id/engine_type_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/engine_type" />
+
+            <Spinner
+                android:id="@+id/engine_type"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="@string/engine_type" />
+
+            <TextView
                 android:id="@+id/transmission_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,21 +143,28 @@
                 android:layout_height="50dp"
                 android:contentDescription="@string/city" />
 
+            <TextView
+                android:id="@+id/info_ad_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/info_ad" />
 
+            <EditText
+                android:id="@+id/info_ad"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/publish_button"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/add_ad" />
         </LinearLayout>
+
     </ScrollView>
-
-
-
-    <Button
-        android:id="@+id/publish_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/add_ad"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

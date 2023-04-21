@@ -3,16 +3,37 @@
     <string-array name="audi_models">
         <item>A3</item>
         <item>A4</item>
+        <item>RS4</item>
         <item>Q7</item>
     </string-array>
     <string-array name="bmw_models">
         <item>3</item>
+        <item>5</item>
         <item>7</item>
         <item>X5</item>
     </string-array>
     <string-array name="toyota_models">
+        <item>Corolla</item>
         <item>Camry</item>
         <item>Land Cruiser</item>
         <item>RAV4</item>
+    </string-array>
+    <string-array name="renault_models">
+        <item>Duster</item>
+        <item>Logan</item>
+        <item>Kaptur</item>
+        <item>Sandero</item>
+    </string-array>
+    <string-array name="peugeot_models">
+        <item>308</item>
+        <item>206</item>
+        <item>3008</item>
+        <item>2008</item>
+    </string-array>
+    <string-array name="volvo_models">
+        <item>S40</item>
+        <item>S60</item>
+        <item>C30</item>
+        <item>XC60</item>
     </string-array>
 </resources>

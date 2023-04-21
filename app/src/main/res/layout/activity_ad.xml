@@ -132,6 +132,23 @@
                 <TableRow>
 
                     <TextView
+                        android:id="@+id/info_engine_type_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/engine_type"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/info_engine_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
                         android:id="@+id/info_car_drive_type_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -182,10 +199,29 @@
 
             </TableLayout>
 
+            <TextView
+                android:id="@+id/info_ad_text"
+                android:layout_width="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingHorizontal="8dp"
+                android:layout_height="wrap_content"
+                android:text="@string/info_ad"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/info_ad"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"/>
+
             <Button
                 android:id="@+id/write_to_seller_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
                 android:text="Написать продавцу" />
 
         </LinearLayout>

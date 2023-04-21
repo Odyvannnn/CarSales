@@ -77,23 +77,38 @@ class HomeFragment : Fragment() {
                 when (position) {
                     0 -> {
                         if (spinnerModel != null) {
-                            adapterSpinner(
-                                resources.getStringArray(R.array.audi_models), spinnerModel
-                            )
+                            adapterSpinner(resources.getStringArray(R.array.audi_models),
+                                spinnerModel)
                         }
                     }
                     1 -> {
                         if (spinnerModel != null) {
-                            adapterSpinner(
-                                resources.getStringArray(R.array.bmw_models), spinnerModel
-                            )
+                            adapterSpinner(resources.getStringArray(R.array.bmw_models),
+                                spinnerModel)
                         }
                     }
                     2 -> {
                         if (spinnerModel != null) {
-                            adapterSpinner(
-                                resources.getStringArray(R.array.toyota_models), spinnerModel
-                            )
+                            adapterSpinner(resources.getStringArray(R.array.toyota_models),
+                                spinnerModel)
+                        }
+                    }
+                    3 -> {
+                        if (spinnerModel != null) {
+                            adapterSpinner(resources.getStringArray(R.array.renault_models),
+                                spinnerModel)
+                        }
+                    }
+                    4 -> {
+                        if (spinnerModel != null) {
+                            adapterSpinner(resources.getStringArray(R.array.peugeot_models),
+                                spinnerModel)
+                        }
+                    }
+                    5 -> {
+                        if (spinnerModel != null) {
+                            adapterSpinner(resources.getStringArray(R.array.volvo_models),
+                                spinnerModel)
                         }
                     }
                 }
