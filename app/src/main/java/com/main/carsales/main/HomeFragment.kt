@@ -58,9 +58,15 @@ class HomeFragment : Fragment() {
 
         fun adapterSpinner(array: Array<String>, spinner: Spinner) {
             val adapterSpinner =
-                context?.let { ArrayAdapter(it, android.R.layout.simple_spinner_item, array) }
+                context?.let { ArrayAdapter(it, R.layout.spinner_item, array) }
             adapterSpinner?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapterSpinner
+        }
+
+        fun loadModelSpinner(res: Array<String>){
+            if (spinnerModel != null){
+                adapterSpinner(res, spinnerModel)
+            }
         }
 
         if (spinnerBrand != null) {
@@ -76,40 +82,22 @@ class HomeFragment : Fragment() {
             ) {
                 when (position) {
                     0 -> {
-                        if (spinnerModel != null) {
-                            adapterSpinner(resources.getStringArray(R.array.audi_models),
-                                spinnerModel)
-                        }
+                        loadModelSpinner(resources.getStringArray(R.array.audi_models))
                     }
                     1 -> {
-                        if (spinnerModel != null) {
-                            adapterSpinner(resources.getStringArray(R.array.bmw_models),
-                                spinnerModel)
-                        }
+                        loadModelSpinner(resources.getStringArray(R.array.bmw_models))
                     }
                     2 -> {
-                        if (spinnerModel != null) {
-                            adapterSpinner(resources.getStringArray(R.array.toyota_models),
-                                spinnerModel)
-                        }
+                        loadModelSpinner(resources.getStringArray(R.array.toyota_models))
                     }
                     3 -> {
-                        if (spinnerModel != null) {
-                            adapterSpinner(resources.getStringArray(R.array.renault_models),
-                                spinnerModel)
-                        }
+                        loadModelSpinner(resources.getStringArray(R.array.renault_models))
                     }
                     4 -> {
-                        if (spinnerModel != null) {
-                            adapterSpinner(resources.getStringArray(R.array.peugeot_models),
-                                spinnerModel)
-                        }
+                        loadModelSpinner(resources.getStringArray(R.array.peugeot_models))
                     }
                     5 -> {
-                        if (spinnerModel != null) {
-                            adapterSpinner(resources.getStringArray(R.array.volvo_models),
-                                spinnerModel)
-                        }
+                        loadModelSpinner(resources.getStringArray(R.array.volvo_models))
                     }
                 }
             }
@@ -126,4 +114,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
     }
+
+
 }
