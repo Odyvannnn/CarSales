@@ -2,6 +2,7 @@ package com.main.carsales.messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.main.carsales.R
@@ -23,6 +24,7 @@ class FirstMessageActivity : AppCompatActivity() {
 
         binding.sendMessageButton.setOnClickListener {
             performSendMessage()
+            Toast.makeText(this, "Сообщение отправлено!", Toast.LENGTH_SHORT).show()
         }
     }
 
