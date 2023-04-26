@@ -3,20 +3,26 @@ package com.main.carsales.ad
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.main.carsales.adapters.GalleryAdapter
 import com.main.carsales.databinding.ActivityAdBinding
+import com.main.carsales.main.MainActivity
 import com.main.carsales.messages.FirstMessageActivity
 
 class AdActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdBinding
     private lateinit var auth: FirebaseAuth
+    private val db = Firebase.firestore
     private val images = mutableListOf<String>()
 
 
@@ -42,9 +48,18 @@ class AdActivity : AppCompatActivity() {
         }
 
         binding.viewPager.adapter = GalleryAdapter(images)
-        if (fromId == toId){
+        if (fromId == toId) {
             binding.writeToSellerButton.visibility = View.INVISIBLE
+            binding.deleteAdButton.visibility = View.VISIBLE
+            supportActionBar?.title = "Объявление активно"
+        }else{
+            binding.deleteAdButton.visibility = View.INVISIBLE
         }
+        if(intent.getStringExtra("status") == "in_archive"){
+            binding.deleteAdButton.visibility = View.INVISIBLE
+            supportActionBar?.title = "Объявление находится в архиве"
+        }
+
         binding.viewPager.setPageTransformer(getTransformation())
 
         binding.writeToSellerButton.setOnClickListener {
@@ -53,7 +68,46 @@ class AdActivity : AppCompatActivity() {
             intent.putExtra("adId", adId)
             startActivity(intent)
         }
+        binding.deleteAdButton.setOnClickListener {
+            val fileName = intent.getStringExtra("adId")
+            if (fileName != null) {
+                archivePhotos(fileName)
+                Toast.makeText(this, "Объявление удалено", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
+
+    private fun archivePhotos(reference: String){
+        val storage = FirebaseStorage.getInstance()
+        val fileName = intent.getStringExtra("adId")
+        val docRef = db.collection("ads").document(reference)
+        val status = HashMap<String, Any>()
+        status["status"] = "in_archive"
+        docRef.get().addOnSuccessListener {
+            val data = it.data
+            if (data != null) {
+                for (i in 2 until 10) {
+                    val photoUrl = data["pic$i"].toString()
+                    if (photoUrl != "null") {
+                        val photoRef = storage.getReferenceFromUrl(photoUrl)
+                        photoRef.delete().addOnSuccessListener {
+                        }.addOnFailureListener {
+                        }
+                    }
+                    else {
+                        break
+                    }
+                }
+                if (fileName != null) {
+                    db.collection("ads").document(fileName).update(status)
+                }
+            }
+        }.addOnFailureListener {
+        }
+    }
+
     private fun getTransformation(): CompositePageTransformer{
         val transform = CompositePageTransformer()
         transform.addTransformer(MarginPageTransformer(30))

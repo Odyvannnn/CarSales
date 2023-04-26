@@ -24,4 +24,9 @@
     <style name="CameraButton">
         <item name="android:background">@drawable/camera_button</item>
     </style>
+
+    <style name="CancelButtonTheme" parent="ThemeOverlay.AppCompat">
+        <item name="backgroundTint">@color/red</item>
+    </style>
+
 </resources>

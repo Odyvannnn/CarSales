@@ -6,9 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".main.AccountFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/no_ads_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="У вас нет объявлений"
+            app:layout_constraintBottom_toTopOf="@+id/signout_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/signout_button"
