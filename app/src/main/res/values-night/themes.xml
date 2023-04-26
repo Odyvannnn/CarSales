@@ -26,7 +26,9 @@
     </style>
 
     <style name="CancelButtonTheme" parent="ThemeOverlay.AppCompat">
-        <item name="backgroundTint">@color/red</item>
+        <item name="android:backgroundTint">@color/red</item>
+        <item name="android:textAppearance">@null</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 </resources>

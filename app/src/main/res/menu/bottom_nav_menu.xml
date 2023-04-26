@@ -4,7 +4,7 @@
     <item
         android:id="@+id/ads"
         android:icon="@drawable/ic_baseline_search_24"
-        android:title="Объявления" />
+        android:title="Поиск" />
     <item
         android:id="@+id/addAd"
         android:icon="@drawable/ic_baseline_add_circle_24"

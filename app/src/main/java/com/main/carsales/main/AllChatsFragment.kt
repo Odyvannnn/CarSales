@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -33,6 +34,7 @@ class AllChatsFragment : Fragment()  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).supportActionBar?.title = "Сообщения"
         val uid = FirebaseAuth.getInstance().uid  ?: ""
         binding.latestChatsRecyclerView.adapter = adapter
         binding.latestChatsRecyclerView.layoutManager = LinearLayoutManager(context)

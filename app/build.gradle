@@ -70,4 +70,6 @@ dependencies {
     implementation "com.github.lisawray.groupie:groupie:$groupie_version"
     implementation "com.github.lisawray.groupie:groupie-viewbinding:$groupie_version"
 
+    implementation 'com.airbnb.android:paris:2.0.2'
+
 }

@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.airbnb.paris.extensions.style
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.main.carsales.R
 import com.main.carsales.adapters.GalleryAdapter
 import com.main.carsales.databinding.ActivityAdBinding
 import com.main.carsales.main.MainActivity
@@ -46,37 +48,35 @@ class AdActivity : AppCompatActivity() {
             (getChildAt(0) as RecyclerView).overScrollMode =
                 RecyclerView.OVER_SCROLL_NEVER
         }
-
         binding.viewPager.adapter = GalleryAdapter(images)
-        if (fromId == toId) {
-            binding.writeToSellerButton.visibility = View.INVISIBLE
-            binding.deleteAdButton.visibility = View.VISIBLE
-            supportActionBar?.title = "Объявление активно"
-        }else{
-            binding.deleteAdButton.visibility = View.INVISIBLE
-        }
-        if(intent.getStringExtra("status") == "in_archive"){
-            binding.deleteAdButton.visibility = View.INVISIBLE
-            supportActionBar?.title = "Объявление находится в архиве"
-        }
-
         binding.viewPager.setPageTransformer(getTransformation())
 
-        binding.writeToSellerButton.setOnClickListener {
-            val intent = Intent(this, FirstMessageActivity::class.java)
-            intent.putExtra("seller_uid", toId)
-            intent.putExtra("adId", adId)
-            startActivity(intent)
+        if(intent.getStringExtra("status") == "in_archive"){
+            supportActionBar?.title = "Объявление находится в архиве"
+            binding.writeOrDeleteButton.visibility = View.INVISIBLE
         }
-        binding.deleteAdButton.setOnClickListener {
-            val fileName = intent.getStringExtra("adId")
-            if (fileName != null) {
-                archivePhotos(fileName)
-                Toast.makeText(this, "Объявление удалено", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+
+        if (fromId == toId && intent.getStringExtra("status") != "in_archive"){
+            supportActionBar?.title = "Объявление активно"
+            binding.writeOrDeleteButton.style(R.style.CancelButtonTheme)
+            binding.writeOrDeleteButton.text = "Удалить объявление"
+            binding.writeOrDeleteButton.setOnClickListener {
+                val fileName = intent.getStringExtra("adId")
+                if (fileName != null) {
+                    archivePhotos(fileName)
+                    Toast.makeText(this, "Объявление удалено", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
             }
-        }
+        }else{
+            binding.writeOrDeleteButton.text = "Написать продавцу"
+            binding.writeOrDeleteButton.setOnClickListener {
+                val intent = Intent(this, FirstMessageActivity::class.java)
+                intent.putExtra("seller_uid", toId)
+                intent.putExtra("adId", adId)
+                startActivity(intent) }
+            }
     }
 
     private fun archivePhotos(reference: String){
