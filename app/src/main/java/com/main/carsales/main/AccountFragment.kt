@@ -1,6 +1,7 @@
 package com.main.carsales.main
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -53,8 +54,11 @@ class AccountFragment : Fragment() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return when (menuItem.itemId) {
                     R.id.exit -> {
+                        val intent = Intent(context, AuthActivity::class.java)
                         FirebaseAuth.getInstance().signOut()
-                        startActivity(Intent(context, AuthActivity::class.java))
+                        intent.addFlags(FLAG_ACTIVITY_CLEAR_TOP)
+                        (activity as AppCompatActivity).finish()
+                        startActivity(intent)
                         true
                     }
                     else -> false
