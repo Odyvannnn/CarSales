@@ -51,32 +51,58 @@ class AdActivity : AppCompatActivity() {
         binding.viewPager.adapter = GalleryAdapter(images)
         binding.viewPager.setPageTransformer(getTransformation())
 
-        if(intent.getStringExtra("status") == "in_archive"){
-            supportActionBar?.title = "Объявление находится в архиве"
-            binding.writeOrDeleteButton.visibility = View.INVISIBLE
-        }
 
-        if (fromId == toId && intent.getStringExtra("status") != "in_archive"){
-            supportActionBar?.title = "Объявление активно"
-            binding.writeOrDeleteButton.style(R.style.CancelButtonTheme)
-            binding.writeOrDeleteButton.text = "Удалить объявление"
-            binding.writeOrDeleteButton.setOnClickListener {
-                val fileName = intent.getStringExtra("adId")
-                if (fileName != null) {
-                    archivePhotos(fileName)
-                    Toast.makeText(this, "Объявление удалено", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
+        when (intent.getStringExtra("status")){
+            "in_archive" ->{
+                supportActionBar?.title = "Объявление находится в архиве"
+                binding.writeOrDeleteButton.visibility = View.INVISIBLE
+            }
+            "on_moderation" ->{
+                supportActionBar?.title = "Объявление на модерации"
+                deleteButton()
+            }
+            "retake_photos" ->{
+                supportActionBar?.title = "Переснимите автомобиль"
+                deleteButton()
+                binding.retakePhotosButton.visibility = View.VISIBLE
+                binding.retakePhotosButton.setOnClickListener {
+                    val fileName = intent.getStringExtra("adId")
+                    if (fileName != null){
+                        deletePhotos(fileName)
+                        val intent = Intent(this, AddPhotosActivity::class.java)
+                        intent.putExtra("fileName", fileName)
+                        startActivity(intent)
+                    }
                 }
             }
-        }else{
-            binding.writeOrDeleteButton.text = "Написать продавцу"
-            binding.writeOrDeleteButton.setOnClickListener {
-                val intent = Intent(this, FirstMessageActivity::class.java)
-                intent.putExtra("seller_uid", toId)
-                intent.putExtra("adId", adId)
-                startActivity(intent) }
+            "published" -> {
+                if (fromId == toId){
+                    supportActionBar?.title = "Объявление активно"
+                    deleteButton()
+                }else{
+                    binding.writeOrDeleteButton.text = "Написать продавцу"
+                    binding.writeOrDeleteButton.setOnClickListener {
+                        val intent = Intent(this, FirstMessageActivity::class.java)
+                        intent.putExtra("seller_uid", toId)
+                        intent.putExtra("adId", adId)
+                        startActivity(intent) }
+                }
             }
+        }
+    }
+
+    private fun deleteButton(){
+        binding.writeOrDeleteButton.style(R.style.CancelButtonTheme)
+        binding.writeOrDeleteButton.text = "Удалить объявление"
+        binding.writeOrDeleteButton.setOnClickListener {
+            val fileName = intent.getStringExtra("adId")
+            if (fileName != null) {
+                archivePhotos(fileName)
+                Toast.makeText(this, "Объявление удалено", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun archivePhotos(reference: String){
@@ -102,6 +128,33 @@ class AdActivity : AppCompatActivity() {
                 }
                 if (fileName != null) {
                     db.collection("ads").document(fileName).update(status)
+                }
+            }
+        }.addOnFailureListener {
+        }
+    }
+
+    private fun deletePhotos(reference: String){
+        val storage = FirebaseStorage.getInstance()
+        val docRef = db.collection("ads").document(reference)
+        docRef.get().addOnSuccessListener {
+            val data = it.data
+            if (data != null) {
+                for (i in 1 until 10) {
+                    val photoUrl = data["pic$i"].toString()
+                    if (photoUrl != "null") {
+                        val photoRef = storage.getReferenceFromUrl(photoUrl)
+                        photoRef.delete().addOnSuccessListener {
+                            val updates = hashMapOf<String, Any>(
+                                "pic$i" to FieldValue.delete()
+                            )
+                            docRef.update(updates)
+                        }.addOnFailureListener {
+                        }
+                    }
+                    else {
+                        break
+                    }
                 }
             }
         }.addOnFailureListener {

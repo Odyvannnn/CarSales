@@ -74,6 +74,7 @@ class AdsListActivity : AppCompatActivity() {
                                 putExtra("info_ad", adList[position].info_ad)
                                 putExtra("city", adList[position].city)
                                 putExtra("adId", adList[position].adId)
+                                putExtra("status", adList[position].status)
                             }
                             startActivity(intent)
                         }

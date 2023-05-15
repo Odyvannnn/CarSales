@@ -222,6 +222,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp" />
+            <Button
+                android:id="@+id/retake_photos_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                style="@style/RetakeButtonTheme"
+                android:text="@string/retake_photos"
+                android:layout_marginHorizontal="8dp" />
 
         </LinearLayout>
     </ScrollView>

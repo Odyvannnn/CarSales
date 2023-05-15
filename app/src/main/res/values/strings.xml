@@ -60,5 +60,6 @@
 
     <string name="city">Город</string>
     <string name="add_ad">Опубликовать</string>
+    <string name="retake_photos">Переснять автомобиль</string>
 
 </resources>

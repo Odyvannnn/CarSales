@@ -38,6 +38,10 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="RetakeButtonTheme" parent="ThemeOverlay.AppCompat">
+        <item name="backgroundTint">@color/yellow</item>
+    </style>
+
 
     <style name="Theme.CarSales.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
